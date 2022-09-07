@@ -1,0 +1,73 @@
+import net.serenitybdd.plugins.gradle.SerenityPlugin
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:2.4.34"
+    }
+}
+
+plugins {
+    id "java"
+    id "org.sonarqube" version "3.3"
+}
+
+sourceCompatibility=8
+targetCompatibility=8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+apply plugin: 'java-library'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.sonarqube'
+apply from: "$rootDir/gradle/libraries.gradle"
+apply plugin: SerenityPlugin
+
+/**
+ * This is needed to make sure there are no Cucumber 2 dependencies in the classpath.
+ */
+configurations.all {
+    resolutionStrategy {
+        force libs.cucumber.core
+    }
+}
+dependencies {
+    implementation libs.aeonbits,
+        libs.cucumber.java,
+        libs.cucumber.junit,
+        libs.slf4j.api,
+        libs.slf4j.simple,
+        libs.sonarqube
+
+    compileOnly libs.gson
+
+    testImplementation libs.test.serenity.core,
+        libs.test.serenity.ensure,
+        libs.test.serenity.screenplay,
+        libs.test.serenity.screenplayWebdriver,
+        libs.test.serenity.cucumber6,
+        libs.test.junit.junit
+
+    testRuntimeOnly libs.test.junit.vintage
+}
+
+test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+tasks.withType(Test).configureEach {
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+}
+
+//gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)

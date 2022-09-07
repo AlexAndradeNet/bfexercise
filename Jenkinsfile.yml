@@ -1,0 +1,26 @@
+version: '1'
+
+pipeline:
+  test:
+    systemProperties:
+      environment: 'dev'
+
+  stacks:
+
+    - stack: 'dev'
+      test:
+        systemProperties:
+          environment: 'dev'
+          propEnv: 'development'
+
+    - stack: 'stg'
+      test:
+        systemProperties:
+          environment: 'stg'
+          propEnv: 'staging'
+
+    - stack: 'pro'
+      test:
+        systemProperties:
+          environment: 'pro'
+          propEnv: 'production'
