@@ -16,15 +16,12 @@ import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.actions.selectactions.SelectByVisibleTextFromTarget;
 import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.targets.Target;
-import net.serenitybdd.screenplay.waits.Wait;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.serenitybdd.screenplay.waits.WaitUntilAngularIsReady;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static net.alexanderandrade.ui.screenplay.ui.homepage.HomePage.*;
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;

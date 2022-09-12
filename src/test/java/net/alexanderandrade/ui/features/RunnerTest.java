@@ -8,13 +8,11 @@
  */
 package net.alexanderandrade.ui.features;
 
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 import static org.junit.Assert.assertTrue;
 
 import io.cucumber.junit.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

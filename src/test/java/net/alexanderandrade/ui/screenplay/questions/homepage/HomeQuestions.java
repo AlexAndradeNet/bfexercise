@@ -9,26 +9,14 @@
 package net.alexanderandrade.ui.screenplay.questions.homepage;
 
 import net.alexanderandrade.ui.screenplay.ui.homepage.HomePage;
-import net.serenitybdd.core.Serenity;
-import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.Question;
-import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
-import net.serenitybdd.screenplay.actions.Switch;
 import net.serenitybdd.screenplay.annotations.Subject;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.Attribute;
-import net.serenitybdd.screenplay.questions.Text;
-import net.serenitybdd.screenplay.questions.Value;
-import net.serenitybdd.screenplay.questions.page.AlertTextQuestion;
 import org.openqa.selenium.Alert;
 
-import java.util.List;
-
 import static net.alexanderandrade.ui.screenplay.ui.homepage.HomePage.*;
-import static net.serenitybdd.core.Serenity.getDriver;
 import static net.serenitybdd.screenplay.abilities.BrowseTheWeb.as;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class HomeQuestions {
 

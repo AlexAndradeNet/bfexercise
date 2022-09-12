@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 
 import static net.alexanderandrade.ui.screenplay.questions.homepage.HomeQuestions.*;
 import static net.alexanderandrade.ui.screenplay.tasks.homepage.HomeTasks.*;
