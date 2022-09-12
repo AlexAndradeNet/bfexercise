@@ -30,7 +30,7 @@ public class HomeQuestions {
       Ensure.that(
         Attribute.of(
           HomePage.RADIO_BUTTON.of( radioButtonValue.toLowerCase() )
-        ).named( "selected" ).viewedBy(theActorInTheSpotlight()).asBoolean()
+        ).named( "selected" ).asBoolean()
       ).isTrue()
     );
   }
@@ -57,7 +57,7 @@ public class HomeQuestions {
   public static <T extends Actor> void ensureThatTheCheckboxOptionIsSelected ( Actor actor, String menuOption ) {
     actor.attemptsTo(
       Ensure.that(
-        Attribute.of( HomePage.CHECKBOX.of( menuOption.toLowerCase() ) ).named( "checked" ).viewedBy( actor ).asBoolean()
+        Attribute.of( HomePage.CHECKBOX.of( menuOption.toLowerCase() ) ).named( "checked" ).asBoolean()
       ).isTrue()
     );
   }
@@ -65,12 +65,11 @@ public class HomeQuestions {
   @Subject("{0} verify that the alert has the text")
   public static <T extends Actor> void ensureThatTheAlertHasTheText ( Actor actor, String menuOption ) {
     Alert alert = as( actor ).getAlert();
-    String alertText = alert.getText();
     alert.accept();
 
     actor.attemptsTo(
       Ensure.that(
-        alertText
+        alert.getText()
       ).contains( menuOption )
     );
   }

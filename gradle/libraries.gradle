@@ -1,6 +1,6 @@
 ext{
-    serenityCoreVersion = '2.3.12'
-    cucumberVersion = '6.9.1'
+    serenityCoreVersion = '3.3.4'
+    cucumberVersion = '7.7.0'
     junitVersion = '4.13.2'
     JunitJupiterVersion = '5.7.2'
     aeonbitsVersion = '1.0.12'
@@ -28,7 +28,7 @@ ext{
                 ensure: "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}",
                 screenplay: "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
                 screenplayWebdriver: "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}",
-                cucumber6: "net.serenity-bdd:serenity-cucumber6:${serenityCoreVersion}",
+                cucumber6: "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
                 junit: "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
             ],
             junit: [
