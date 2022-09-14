@@ -10,13 +10,13 @@ package net.alexanderandrade.ui.screenplay.questions.homepage;
 
 import net.alexanderandrade.ui.screenplay.ui.homepage.HomePage;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.actions.AlertText;
 import net.serenitybdd.screenplay.annotations.Subject;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.Attribute;
-import org.openqa.selenium.Alert;
 
+import static net.alexanderandrade.ui.screenplay.ui.homepage.ExternalPage.PAGE_TITLE;
 import static net.alexanderandrade.ui.screenplay.ui.homepage.HomePage.*;
-import static net.serenitybdd.screenplay.abilities.BrowseTheWeb.as;
 
 public class HomeQuestions {
 
@@ -64,12 +64,9 @@ public class HomeQuestions {
 
   @Subject("{0} verify that the alert has the text")
   public static <T extends Actor> void ensureThatTheAlertHasTheText ( Actor actor, String menuOption ) {
-    Alert alert = as( actor ).getAlert();
-    alert.accept();
-
     actor.attemptsTo(
       Ensure.that(
-        alert.getText()
+        AlertText.currentlyVisible().thenAccept().answeredBy( actor )
       ).contains( menuOption )
     );
   }
@@ -114,7 +111,7 @@ public class HomeQuestions {
   public static <T extends Actor> void ensureThatTheLoadedPageHasTheTitle ( Actor actor, String pageTitle ) {
     actor.attemptsTo(
       Ensure.that(
-        IFRAME_PAGE_TITLE
+        PAGE_TITLE
       ).text().contains( pageTitle.toUpperCase() )
     );
   }
