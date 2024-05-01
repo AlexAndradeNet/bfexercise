@@ -1,4 +1,4 @@
-package net.alexanderandrade.ui.features.steps;
+package net.alexanderandrade.ui.definitions;
 
 import io.cucumber.java.ParameterType;
 import net.serenitybdd.screenplay.Actor;

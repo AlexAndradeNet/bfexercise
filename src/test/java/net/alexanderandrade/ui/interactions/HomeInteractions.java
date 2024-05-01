@@ -6,7 +6,7 @@
  * <p>NOTICE: This file is subject to the terms and conditions defined in file 'LICENSE', which is
  * part of this source code package.
  */
-package net.alexanderandrade.ui.screenplay.interactions.homepage;
+package net.alexanderandrade.ui.interactions;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;

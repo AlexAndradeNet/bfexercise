@@ -6,17 +6,15 @@
  * <p>NOTICE: This file is subject to the terms and conditions defined in file 'LICENSE', which is
  * part of this source code package.
  */
-package net.alexanderandrade.ui.screenplay.questions.homepage;
+package net.alexanderandrade.ui.questions;
 
-import net.alexanderandrade.ui.screenplay.ui.homepage.HomePage;
+import net.alexanderandrade.ui.ui.ExternalPage;
+import net.alexanderandrade.ui.ui.HomePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actions.AlertText;
 import net.serenitybdd.screenplay.annotations.Subject;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.Attribute;
-
-import static net.alexanderandrade.ui.screenplay.ui.homepage.ExternalPage.PAGE_TITLE;
-import static net.alexanderandrade.ui.screenplay.ui.homepage.HomePage.*;
 
 public class HomeQuestions {
 
@@ -75,7 +73,7 @@ public class HomeQuestions {
   public static <T extends Actor> void ensureThatTheThirdPriceValue ( Actor actor, int price ) {
     actor.attemptsTo(
       Ensure.that(
-        COURSE_THIRD_PRICE
+        HomePage.COURSE_THIRD_PRICE
       ).text().contains( "" + price )
     );
   }
@@ -84,7 +82,7 @@ public class HomeQuestions {
   public static <T extends Actor> void ensureThatTheTextboxIsDisplayed ( Actor actor ) {
     actor.attemptsTo(
       Ensure.that(
-        TEXTBOX_SHOW_HIDE
+        HomePage.TEXTBOX_SHOW_HIDE
       ).isDisplayed()
     );
   }
@@ -93,7 +91,7 @@ public class HomeQuestions {
   public static <T extends Actor> void ensureThatTheTextboxIsNotDisplayed ( Actor actor ) {
     actor.attemptsTo(
       Ensure.that(
-        TEXTBOX_SHOW_HIDE
+        HomePage.TEXTBOX_SHOW_HIDE
       ).isNotDisplayed()
     );
   }
@@ -102,7 +100,7 @@ public class HomeQuestions {
   public static <T extends Actor> void ensureThatTheContextualMenuIsDisplayed ( Actor actor ) {
     actor.attemptsTo(
       Ensure.that(
-        MENU_MOUSE_OVER
+        HomePage.MENU_MOUSE_OVER
       ).isDisplayed()
     );
   }
@@ -111,7 +109,7 @@ public class HomeQuestions {
   public static <T extends Actor> void ensureThatTheLoadedPageHasTheTitle ( Actor actor, String pageTitle ) {
     actor.attemptsTo(
       Ensure.that(
-        PAGE_TITLE
+        ExternalPage.PAGE_TITLE
       ).text().contains( pageTitle.toUpperCase() )
     );
   }

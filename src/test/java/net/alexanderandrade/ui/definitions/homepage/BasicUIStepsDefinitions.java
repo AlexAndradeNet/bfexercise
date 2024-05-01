@@ -1,4 +1,4 @@
-package net.alexanderandrade.ui.features.steps.homepage;
+package net.alexanderandrade.ui.definitions.homepage;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -6,11 +6,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 
-import static net.alexanderandrade.ui.screenplay.questions.homepage.HomeQuestions.*;
-import static net.alexanderandrade.ui.screenplay.tasks.homepage.HomeTasks.*;
+import static net.alexanderandrade.ui.questions.HomeQuestions.*;
+import static net.alexanderandrade.ui.tasks.HomeTasks.*;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
-public class BasicUISteps {
+public class BasicUIStepsDefinitions {
   Actor actor;
   @When("select the {string} option in the radio button") public void selectTheOptionInTheRadioButton ( String radioButtonValue ) {
     actor = theActorInTheSpotlight();

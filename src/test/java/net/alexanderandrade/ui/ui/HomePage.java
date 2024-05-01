@@ -6,11 +6,11 @@
  * <p>NOTICE: This file is subject to the terms and conditions defined in file 'LICENSE', which is
  * part of this source code package.
  */
-package net.alexanderandrade.ui.screenplay.ui.homepage;
+package net.alexanderandrade.ui.ui;
 
+import net.serenitybdd.annotations.DefaultUrl;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.screenplay.targets.Target;
-import net.thucydides.core.annotations.DefaultUrl;
 
 @DefaultUrl("page:home.page")
 public class HomePage extends PageObject {
@@ -77,12 +77,16 @@ public class HomePage extends PageObject {
 
   public static final String IFRAME_NAME = "iframe-name";
 
-  public static final Target IFRAME_MENU =
-    Target.the("menu {0} into Iframe")
-      .locatedBy( "(//a[text()='{0}'])[1]");
+  public static final Target IFRAME =
+    Target.the("iframe")
+      .locatedBy( "//iframe[@name='" + IFRAME_NAME + "']");
 
-  public static final Target IFRAME_PAGE_TITLE =
-    Target.the("Iframe page title")
-      .locatedBy( "//h1");
+  public static final Target BUTTON_OPEN_WINDOW =
+    Target.the("button open new window")
+      .locatedBy( "//button[@id='openwindow']");
+
+  public static final Target BUTTON_OPEN_TAB =
+    Target.the("button open new tab")
+      .locatedBy( "//a[@id='opentab']");
 
 }
