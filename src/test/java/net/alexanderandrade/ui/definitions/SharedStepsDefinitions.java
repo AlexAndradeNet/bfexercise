@@ -9,12 +9,14 @@ package net.alexanderandrade.ui.definitions;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
+import net.alexanderandrade.ui.interactions.WaitForPageLoad;
 import net.alexanderandrade.ui.tasks.HomeTasks;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 
 import static net.serenitybdd.core.Serenity.getDriver;
 
@@ -22,6 +24,11 @@ public class SharedStepsDefinitions {
 
   @Before(order = 0) public void setTheStage ( Scenario scenario ) {
     OnStage.setTheStage( new OnlineCast() );
+  }
+
+  @AfterEach public void afterEach () {
+    getDriver().navigate().refresh();
+    WaitForPageLoad.complete();
   }
 
   @AfterAll public static void afterAll () {

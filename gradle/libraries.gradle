@@ -25,7 +25,6 @@ ext {
                             junit              : "net.serenity-bdd:serenity-junit5:${serenityCoreVersion}",
                     ],
                     junit   : [
-                            // junit: "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
                             engine  : "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
                             launcher: "org.junit.platform:junit-platform-launcher:${junitPlatformVersion}",
                             suite   : "org.junit.platform:junit-platform-suite:${junitPlatformVersion}"

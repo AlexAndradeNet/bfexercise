@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.alexanderandrade.ui.questions.GetExternalPageTitle;
+import net.serenitybdd.screenplay.ensure.Ensure;
 
 import static net.alexanderandrade.ui.tasks.HomeTasks.*;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -24,9 +25,10 @@ public class AdvancedUIStepsDefinitions {
     goToNewTabAndWaitBeforeClickOnLink( menuOption );
   }
 
-  @Then("the page title is {string}") public void thePageTitleIs ( String title ) {
-    // ensureThatTheLoadedPageHasTheTitle(title);
-    theActorInTheSpotlight().should( seeThat( "The page title is correct", GetExternalPageTitle.mainTitle(), equalTo( title ) ) );
+  @Then("the page title is {string}") public void thePageTitleIs ( String expectedTitle ) {
+    theActorInTheSpotlight().attemptsTo(
+      Ensure.that( "The page title is correct", GetExternalPageTitle.mainTitle() ).isEqualTo( expectedTitle )
+    );
   }
 
   @And("return to the main page after close the new window") public void returnToTheMainPageAfterCloseTheNewWindow () {

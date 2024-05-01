@@ -11,60 +11,59 @@ import static net.alexanderandrade.ui.tasks.HomeTasks.*;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class BasicUIStepsDefinitions {
-  Actor actor;
 
   @When("select the {string} option in the radio button") public void selectTheOptionInTheRadioButton ( String radioButtonValue ) {
-    actor = theActorInTheSpotlight();
+    
     selectRadioButton( radioButtonValue );
   }
 
   @Then("the {string} option is selected") public void theOptionIsSelected ( String radioButtonValue ) {
-    ensureThatRadioButtonIsSelected( actor, radioButtonValue );
+    ensureThatRadioButtonIsSelected( radioButtonValue );
   }
 
   @When("select {string} from country menu") public void selectFromCountryMenu ( String country ) {
-    actor = theActorInTheSpotlight();
+    
     selectMenu( country );
   }
 
   @Then("the {string} was wrote into the country text field") public void theWasWroteIntoTheCountryTextField ( String country ) {
-    ensureThatTheMenuOptionIsSelected( actor, country );
+    ensureThatTheMenuOptionIsSelected( country );
   }
 
   @When("select {string} from dropdown") public void selectFromDropdown ( String optionValue ) {
-    actor = theActorInTheSpotlight();
+    
     selectDropdown( optionValue );
   }
 
   @Then("the {string} is the selected value in the dropdown") public void theIsTheSelectedValueInTheDropdown ( String optionValue ) {
-    ensureThatTheDropdownOptionIsSelected( actor, optionValue );
+    ensureThatTheDropdownOptionIsSelected( optionValue );
   }
 
   @When("select {string} in the checkbox") public void selectInTheCheckbox ( String option ) {
-    actor = theActorInTheSpotlight();
+    
     selectCheckbox( option );
   }
 
   @Then("the {string} is the selected value in the checkbox") public void theIsTheSelectedValueInTheCheckbox ( String optionValue ) {
-    ensureThatTheCheckboxOptionIsSelected( actor, optionValue );
+    ensureThatTheCheckboxOptionIsSelected( optionValue );
   }
 
   @When("alert the name {string}") public void alertTheName ( String value ) {
-    actor = theActorInTheSpotlight();
+    
     alertName( value );
   }
 
   @Then("the alert has the text {string}") public void theAlertHasTheText ( String value ) {
-    ensureThatTheAlertHasTheText( actor, value );
+    ensureThatTheAlertHasTheText( value );
   }
 
   @When("confirm the name {string}") public void confirmTheName ( String value ) {
-    actor = theActorInTheSpotlight();
+    
     confirmName( value );
   }
 
   @Then("the confirm has the text {string}") public void theConfirmHasTheText ( String value ) {
-    ensureThatTheAlertHasTheText( actor, value );
+    ensureThatTheAlertHasTheText( value );
   }
 
   @When("read the third price") public void readTheThirdPrice () {
@@ -72,46 +71,49 @@ public class BasicUIStepsDefinitions {
   }
 
   @Then("the third price is {int}") public void theThirdPriceIs ( int price ) {
-    actor = theActorInTheSpotlight();
-    ensureThatTheThirdPriceValue( actor, price );
+    
+    ensureThatTheThirdPriceValue( price );
   }
 
   @Given("the text box HideShow Example is displayed") public void theTextBoxHideShowExampleIsDisplayed () {
-    actor = theActorInTheSpotlight();
-    ensureThatTheTextboxIsDisplayed( actor );
+    
+    ensureThatTheTextboxIsDisplayed();
   }
 
   @When("ask for Hide it") public void askForHideIt () {
-    hideObject( actor );
+    hideObject();
   }
 
   @Then("the text box is hidden") public void theTextBoxIsHidden () {
-    ensureThatTheTextboxIsNotDisplayed( actor );
+    ensureThatTheTextboxIsNotDisplayed();
   }
 
   @And("ask for Show it") public void askForShowIt () {
-    showObject( actor );
+    showObject();
   }
 
   @Then("the text box is displayed") public void theTextBoxIsDisplayed () {
-    ensureThatTheTextboxIsDisplayed( actor );
+    ensureThatTheTextboxIsDisplayed();
   }
 
   @When("hover on the button Mouse Hover") public void hoverOnTheButtonMouseHover () {
-    actor = theActorInTheSpotlight();
-    hoverOverTheButton( actor );
+    hoverOverTheButton();
   }
 
   @Then("the contextual menu is displayed") public void theContextualMenuReloadIsDisplayed () {
-    ensureThatTheContextualMenuIsDisplayed( actor );
+    ensureThatTheContextualMenuIsDisplayed();
   }
 
   @When("navigate to the {string} link in the iframe") public void navigateToTheJobSupportLinkInTheIframe ( String menuOption ) {
-    actor = theActorInTheSpotlight();
+    
     navigateIntoIframe( menuOption );
   }
 
+  @Then("the page loaded has the title {string}") public void thePageLoadedHasTheTitle ( String pageTitle ) {
+    ensureThatTheLoadedPageHasTheTitle( pageTitle );
+  }
+
   @Then("the page loaded in the iframe has the title {string}") public void thePageLoadedInTheIframeHasTheTitle ( String pageTitle ) {
-    ensureThatTheLoadedPageHasTheTitle( actor, pageTitle );
+    thePageLoadedHasTheTitle( pageTitle );
   }
 }

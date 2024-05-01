@@ -1,15 +1,16 @@
 # language: en
 
 #@ignore
-Feature: Solve course exercises
+Feature: Resolving basic exercises
   As a User
   I want to test all the exercises
   So that I can practice the new knowledge
 
-    #=============================================================================
 
   Background: Open the home page
     Given the Verena is in the home page
+
+    #=============================================================================
 
   #@ignore
   Scenario: Select option in radio button
@@ -60,13 +61,3 @@ Feature: Solve course exercises
     When ask for Hide it
     And ask for Show it
     Then the text box is displayed
-
-  #@ignore
-  Scenario: Mouse hover menu
-    When hover on the button Mouse Hover
-    Then the contextual menu is displayed
-
-  #@ignore
-  Scenario: Iframe navigation
-    When navigate to the "Job Support" link in the iframe
-    Then the page loaded in the iframe has the title "Job Support"
