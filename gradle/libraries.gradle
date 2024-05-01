@@ -1,26 +1,19 @@
 ext{
-    serenityCoreVersion = '3.3.4'
-    cucumberVersion = '7.7.0'
-    junitVersion = '4.13.2'
-    JunitJupiterVersion = '5.7.2'
+    serenityCoreVersion = '4.1.10'
+    cucumberVersion = '7.17.0'
+    junitVersion = '5.10.2'
+    junitPlatformVersion = '1.10.2'
     aeonbitsVersion = '1.0.12'
-    gsonVersion = '2.8.6'
-    slf4jVersion = '1.7.30'
-    sonarScannerVersion = '3.3'
+    gsonVersion = '2.10.1'
+    slf4jVersion = '2.0.13'
 
     libs = [
         gson: "com.google.code.gson:gson:${gsonVersion}",
-        aeonbits: "org.aeonbits.owner:owner-java8:${aeonbitsVersion}",
-        cucumber: [
-            java: "io.cucumber:cucumber-java:${cucumberVersion}",
-            junit: "io.cucumber:cucumber-junit:${cucumberVersion}",
-            core: "io.cucumber:cucumber-core:${cucumberVersion}",
-        ],
+        aeonbits: "org.aeonbits.owner:owner:${aeonbitsVersion}",
         slf4j: [
             api: "org.slf4j:slf4j-api:${slf4jVersion}",
             simple: "org.slf4j:slf4j-simple:${slf4jVersion}",
         ],
-        sonarqube: "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${sonarScannerVersion}",
 
         test: [
             serenity: [
@@ -28,13 +21,19 @@ ext{
                 ensure: "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}",
                 screenplay: "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
                 screenplayWebdriver: "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}",
-                cucumber6: "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
-                junit: "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
+                cucumber: "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
+                junit: "net.serenity-bdd:serenity-junit5:${serenityCoreVersion}",
             ],
             junit: [
-                junit: "junit:junit:${junitVersion}",
-                vintage: "org.junit.vintage:junit-vintage-engine:${JunitJupiterVersion}",
-            ]
+                // junit: "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+                engine: "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
+                launcher: "org.junit.platform:junit-platform-launcher:${junitPlatformVersion}",
+                suite: "org.junit.platform:junit-platform-suite:${junitPlatformVersion}"
+            ],
+            cucumber: [
+                    java: "io.cucumber:cucumber-java:${cucumberVersion}",
+                    junit: "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}"
+            ],
         ]
     ]
 }
