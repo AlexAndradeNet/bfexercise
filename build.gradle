@@ -22,21 +22,21 @@ apply from: "$rootDir/gradle/libraries.gradle"
 
 dependencies {
     implementation libs.aeonbits,
-        libs.slf4j.api,
-        libs.slf4j.simple
+            libs.slf4j.api,
+            libs.slf4j.simple
 
     compileOnly libs.gson
 
     testImplementation libs.test.serenity.core,
-        libs.test.serenity.ensure,
-        libs.test.serenity.screenplay,
-        libs.test.serenity.screenplayWebdriver,
-        libs.test.serenity.cucumber,
-        libs.test.junit.engine,
-        libs.test.junit.launcher,
-        libs.test.junit.suite,
-        libs.test.cucumber.java,
-        libs.test.cucumber.junit
+            libs.test.serenity.ensure,
+            libs.test.serenity.screenplay,
+            libs.test.serenity.screenplayWebdriver,
+            libs.test.serenity.cucumber,
+            libs.test.junit.engine,
+            libs.test.junit.launcher,
+            libs.test.junit.suite,
+            libs.test.cucumber.java,
+            libs.test.cucumber.junit
 
 }
 

@@ -24,8 +24,7 @@ public class SharedStepsDefinitions {
     OnStage.setTheStage( new OnlineCast() );
   }
 
-  @AfterAll
-  public static void afterAll () {
+  @AfterAll public static void afterAll () {
     getDriver().quit();
   }
 

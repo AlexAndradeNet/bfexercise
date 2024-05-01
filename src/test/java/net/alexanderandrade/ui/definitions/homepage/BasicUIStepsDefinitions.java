@@ -12,6 +12,7 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class BasicUIStepsDefinitions {
   Actor actor;
+
   @When("select the {string} option in the radio button") public void selectTheOptionInTheRadioButton ( String radioButtonValue ) {
     actor = theActorInTheSpotlight();
     selectRadioButton( radioButtonValue );
@@ -23,7 +24,7 @@ public class BasicUIStepsDefinitions {
 
   @When("select {string} from country menu") public void selectFromCountryMenu ( String country ) {
     actor = theActorInTheSpotlight();
-    selectMenu( actor, country);
+    selectMenu( country );
   }
 
   @Then("the {string} was wrote into the country text field") public void theWasWroteIntoTheCountryTextField ( String country ) {
@@ -32,7 +33,7 @@ public class BasicUIStepsDefinitions {
 
   @When("select {string} from dropdown") public void selectFromDropdown ( String optionValue ) {
     actor = theActorInTheSpotlight();
-    selectDropdown( actor, optionValue );
+    selectDropdown( optionValue );
   }
 
   @Then("the {string} is the selected value in the dropdown") public void theIsTheSelectedValueInTheDropdown ( String optionValue ) {
@@ -50,7 +51,7 @@ public class BasicUIStepsDefinitions {
 
   @When("alert the name {string}") public void alertTheName ( String value ) {
     actor = theActorInTheSpotlight();
-    alertName( actor, value );
+    alertName( value );
   }
 
   @Then("the alert has the text {string}") public void theAlertHasTheText ( String value ) {
@@ -59,7 +60,7 @@ public class BasicUIStepsDefinitions {
 
   @When("confirm the name {string}") public void confirmTheName ( String value ) {
     actor = theActorInTheSpotlight();
-    confirmName( actor, value );
+    confirmName( value );
   }
 
   @Then("the confirm has the text {string}") public void theConfirmHasTheText ( String value ) {
@@ -75,8 +76,7 @@ public class BasicUIStepsDefinitions {
     ensureThatTheThirdPriceValue( actor, price );
   }
 
-  @Given("the text box HideShow Example is displayed")
-  public void theTextBoxHideShowExampleIsDisplayed () {
+  @Given("the text box HideShow Example is displayed") public void theTextBoxHideShowExampleIsDisplayed () {
     actor = theActorInTheSpotlight();
     ensureThatTheTextboxIsDisplayed( actor );
   }
@@ -106,9 +106,9 @@ public class BasicUIStepsDefinitions {
     ensureThatTheContextualMenuIsDisplayed( actor );
   }
 
-  @When("navigate to the {string} link in the iframe") public void navigateToTheJobSupportLinkInTheIframe (String menuOption) {
+  @When("navigate to the {string} link in the iframe") public void navigateToTheJobSupportLinkInTheIframe ( String menuOption ) {
     actor = theActorInTheSpotlight();
-    navigateIntoIframe( actor, menuOption );
+    navigateIntoIframe( menuOption );
   }
 
   @Then("the page loaded in the iframe has the title {string}") public void thePageLoadedInTheIframeHasTheTitle ( String pageTitle ) {
