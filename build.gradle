@@ -4,6 +4,7 @@ plugins {
     id 'idea'
     id 'org.sonarqube' version '5.0.0.4638'
     id 'net.serenity-bdd.serenity-gradle-plugin' version '4.1.10'
+    id 'com.diffplug.spotless' version '6.25.0'
 }
 
 defaultTasks 'clean', 'test', 'aggregate'
@@ -44,8 +45,44 @@ serenity {
     generateOutcomes = true     // generate report
 }
 
+spotless {
+    encoding 'UTF-8' // Set the encoding, replace 'UTF-8' with `${encoding}` if it's dynamically defined
+
+    java {
+        // Apply Google Java Format with a specific style and options
+        googleJavaFormat('1.22.0').aosp().reflowLongStrings(true)
+
+        // License header configuration
+        licenseHeaderFile 'LICENSE', 'package '
+    }
+
+    groovyGradle {
+        target '*.gradle', 'gradle/*.gradle'
+    }
+
+    format 'dotfiles', {
+        target '.gitignore', '.gitattributes', '.editorconfig'
+        indentWithSpaces(2)
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+
+    // Format SQL files
+    sql {
+        target '**/*.sql' // Define which files to include
+        dbeaver()         // Apply DBeaver formatting conventions
+    }
+
+    // Format JSON files
+    json {
+        target '**/*.json'
+        gson() // Apply Gson-based formatting
+    }
+}
+
 test {
-    testLogging.showStandardStreams = true
+    dependsOn 'spotlessApply'
+    // testLogging.showStandardStreams = true
     systemProperties System.getProperties()
     useJUnitPlatform()
     testLogging {
@@ -59,7 +96,7 @@ test.finalizedBy(aggregate)
     maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
 }*/
 
-//gradle.startParameter.continueOnFailure = true
+gradle.startParameter.continueOnFailure = true
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -67,4 +104,13 @@ tasks.withType(JavaCompile) {
 
 tasks.withType(Javadoc) {
     options.encoding = 'UTF-8'
+}
+
+// Tasks for checking and applying formats
+tasks.named('spotlessApply') {
+    group = 'formatting'
+}
+
+tasks.named('spotlessCheck') {
+    group = 'verification'
 }
