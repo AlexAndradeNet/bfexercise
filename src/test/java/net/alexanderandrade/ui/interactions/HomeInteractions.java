@@ -1,9 +1,16 @@
-/**
- * Alexander Andrade CONFIDENTIAL
- * <p>Copyright (c) 2022 . All Rights Reserved.
- * <p>NOTICE: This file is subject to the terms and conditions defined in file 'LICENSE', which is
- * part of this source code package.
- */
+/*
+AlexanderAndrade.Net CONFIDENTIAL
+
+Copyright (c) 2024. All Rights Reserved.
+
+NOTICE: The source code contained or described herein and all documents
+related to the source code ("Material") are owned by Alexander Andrade
+or its companies, suppliers or licensors.
+
+Dissemination of this information or reproduction of this material
+is strictly forbidden unless prior written permission is obtained
+from Alexander Andrade.
+*/
 package net.alexanderandrade.ui.interactions;
 
 import net.serenitybdd.screenplay.Actor;
@@ -11,7 +18,8 @@ import net.serenitybdd.screenplay.Interaction;
 
 public class HomeInteractions implements Interaction {
 
-  @Override public <T extends Actor> void performAs ( T t ) {
-    // Empty for compatibility
-  }
+    @Override
+    public <T extends Actor> void performAs(T t) {
+        // Empty for compatibility
+    }
 }

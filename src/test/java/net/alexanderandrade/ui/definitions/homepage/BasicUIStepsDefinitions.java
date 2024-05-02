@@ -1,119 +1,153 @@
+/*
+AlexanderAndrade.Net CONFIDENTIAL
+
+Copyright (c) 2024. All Rights Reserved.
+
+NOTICE: The source code contained or described herein and all documents
+related to the source code ("Material") are owned by Alexander Andrade
+or its companies, suppliers or licensors.
+
+Dissemination of this information or reproduction of this material
+is strictly forbidden unless prior written permission is obtained
+from Alexander Andrade.
+*/
 package net.alexanderandrade.ui.definitions.homepage;
+
+import static net.alexanderandrade.ui.questions.HomeQuestions.*;
+import static net.alexanderandrade.ui.tasks.HomeTasks.*;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.serenitybdd.screenplay.Actor;
-
-import static net.alexanderandrade.ui.questions.HomeQuestions.*;
-import static net.alexanderandrade.ui.tasks.HomeTasks.*;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class BasicUIStepsDefinitions {
 
-  @When("select the {string} option in the radio button") public void selectTheOptionInTheRadioButton ( String radioButtonValue ) {
-    
-    selectRadioButton( radioButtonValue );
-  }
+    @When("select the {string} option in the radio button")
+    public void selectTheOptionInTheRadioButton(String radioButtonValue) {
+        selectRadioButton(radioButtonValue);
+    }
 
-  @Then("the {string} option is selected") public void theOptionIsSelected ( String radioButtonValue ) {
-    ensureThatRadioButtonIsSelected( radioButtonValue );
-  }
+    @Then("the {string} option is selected")
+    public void theOptionIsSelected(String radioButtonValue) {
+        ensureThatRadioButtonIsSelected(radioButtonValue);
+    }
 
-  @When("select {string} from country menu") public void selectFromCountryMenu ( String country ) {
-    
-    selectMenu( country );
-  }
+    @When("select {string} from country menu")
+    public void selectFromCountryMenu(String country) {
 
-  @Then("the {string} was wrote into the country text field") public void theWasWroteIntoTheCountryTextField ( String country ) {
-    ensureThatTheMenuOptionIsSelected( country );
-  }
+        selectMenu(country);
+    }
 
-  @When("select {string} from dropdown") public void selectFromDropdown ( String optionValue ) {
-    
-    selectDropdown( optionValue );
-  }
+    @Then("the {string} was wrote into the country text field")
+    public void theWasWroteIntoTheCountryTextField(String country) {
+        ensureThatTheMenuOptionIsSelected(country);
+    }
 
-  @Then("the {string} is the selected value in the dropdown") public void theIsTheSelectedValueInTheDropdown ( String optionValue ) {
-    ensureThatTheDropdownOptionIsSelected( optionValue );
-  }
+    @When("select {string} from dropdown")
+    public void selectFromDropdown(String optionValue) {
 
-  @When("select {string} in the checkbox") public void selectInTheCheckbox ( String option ) {
-    
-    selectCheckbox( option );
-  }
+        selectDropdown(optionValue);
+    }
 
-  @Then("the {string} is the selected value in the checkbox") public void theIsTheSelectedValueInTheCheckbox ( String optionValue ) {
-    ensureThatTheCheckboxOptionIsSelected( optionValue );
-  }
+    @Then("the {string} is the selected value in the dropdown")
+    public void theIsTheSelectedValueInTheDropdown(String optionValue) {
+        ensureThatTheDropdownOptionIsSelected(optionValue);
+    }
 
-  @When("alert the name {string}") public void alertTheName ( String value ) {
-    
-    alertName( value );
-  }
+    @When("select {string} in the checkbox")
+    public void selectInTheCheckbox(String option) {
 
-  @Then("the alert has the text {string}") public void theAlertHasTheText ( String value ) {
-    ensureThatTheAlertHasTheText( value );
-  }
+        selectCheckbox(option);
+    }
 
-  @When("confirm the name {string}") public void confirmTheName ( String value ) {
-    
-    confirmName( value );
-  }
+    @Then("the {string} is the selected value in the checkbox")
+    public void theIsTheSelectedValueInTheCheckbox(String optionValue) {
+        ensureThatTheCheckboxOptionIsSelected(optionValue);
+    }
 
-  @Then("the confirm has the text {string}") public void theConfirmHasTheText ( String value ) {
-    ensureThatTheAlertHasTheText( value );
-  }
+    @When("alert the name {string}")
+    public void alertTheName(String value) {
 
-  @When("read the third price") public void readTheThirdPrice () {
-    // Do nothing
-  }
+        alertName(value);
+    }
 
-  @Then("the third price is {int}") public void theThirdPriceIs ( int price ) {
-    
-    ensureThatTheThirdPriceValue( price );
-  }
+    @Then("the alert has the text {string}")
+    public void theAlertHasTheText(String value) {
+        ensureThatTheAlertHasTheText(value);
+    }
 
-  @Given("the text box HideShow Example is displayed") public void theTextBoxHideShowExampleIsDisplayed () {
-    
-    ensureThatTheTextboxIsDisplayed();
-  }
+    @When("confirm the name {string}")
+    public void confirmTheName(String value) {
 
-  @When("ask for Hide it") public void askForHideIt () {
-    hideObject();
-  }
+        confirmName(value);
+    }
 
-  @Then("the text box is hidden") public void theTextBoxIsHidden () {
-    ensureThatTheTextboxIsNotDisplayed();
-  }
+    @Then("the confirm has the text {string}")
+    public void theConfirmHasTheText(String value) {
+        ensureThatTheAlertHasTheText(value);
+    }
 
-  @And("ask for Show it") public void askForShowIt () {
-    showObject();
-  }
+    @When("read the third price")
+    public void readTheThirdPrice() {
+        // Do nothing
+    }
 
-  @Then("the text box is displayed") public void theTextBoxIsDisplayed () {
-    ensureThatTheTextboxIsDisplayed();
-  }
+    @Then("the third price is {int}")
+    public void theThirdPriceIs(int price) {
 
-  @When("hover on the button Mouse Hover") public void hoverOnTheButtonMouseHover () {
-    hoverOverTheButton();
-  }
+        ensureThatTheThirdPriceValue(price);
+    }
 
-  @Then("the contextual menu is displayed") public void theContextualMenuReloadIsDisplayed () {
-    ensureThatTheContextualMenuIsDisplayed();
-  }
+    @Given("the text box HideShow Example is displayed")
+    public void theTextBoxHideShowExampleIsDisplayed() {
 
-  @When("navigate to the {string} link in the iframe") public void navigateToTheJobSupportLinkInTheIframe ( String menuOption ) {
-    
-    navigateIntoIframe( menuOption );
-  }
+        ensureThatTheTextboxIsDisplayed();
+    }
 
-  @Then("the page loaded has the title {string}") public void thePageLoadedHasTheTitle ( String pageTitle ) {
-    ensureThatTheLoadedPageHasTheTitle( pageTitle );
-  }
+    @When("ask for Hide it")
+    public void askForHideIt() {
+        hideObject();
+    }
 
-  @Then("the page loaded in the iframe has the title {string}") public void thePageLoadedInTheIframeHasTheTitle ( String pageTitle ) {
-    thePageLoadedHasTheTitle( pageTitle );
-  }
+    @Then("the text box is hidden")
+    public void theTextBoxIsHidden() {
+        ensureThatTheTextboxIsNotDisplayed();
+    }
+
+    @And("ask for Show it")
+    public void askForShowIt() {
+        showObject();
+    }
+
+    @Then("the text box is displayed")
+    public void theTextBoxIsDisplayed() {
+        ensureThatTheTextboxIsDisplayed();
+    }
+
+    @When("hover on the button Mouse Hover")
+    public void hoverOnTheButtonMouseHover() {
+        hoverOverTheButton();
+    }
+
+    @Then("the contextual menu is displayed")
+    public void theContextualMenuReloadIsDisplayed() {
+        ensureThatTheContextualMenuIsDisplayed();
+    }
+
+    @When("navigate to the {string} link in the iframe")
+    public void navigateToTheJobSupportLinkInTheIframe(String menuOption) {
+
+        navigateIntoIframe(menuOption);
+    }
+
+    @Then("the page loaded has the title {string}")
+    public void thePageLoadedHasTheTitle(String pageTitle) {
+        ensureThatTheLoadedPageHasTheTitle(pageTitle);
+    }
+
+    @Then("the page loaded in the iframe has the title {string}")
+    public void thePageLoadedInTheIframeHasTheTitle(String pageTitle) {
+        thePageLoadedHasTheTitle(pageTitle);
+    }
 }

@@ -1,9 +1,23 @@
+/*
+AlexanderAndrade.Net CONFIDENTIAL
+
+Copyright (c) 2024. All Rights Reserved.
+
+NOTICE: The source code contained or described herein and all documents
+related to the source code ("Material") are owned by Alexander Andrade
+or its companies, suppliers or licensors.
+
+Dissemination of this information or reproduction of this material
+is strictly forbidden unless prior written permission is obtained
+from Alexander Andrade.
+*/
 package net.alexanderandrade.ui.ui;
 
 import net.serenitybdd.screenplay.targets.Target;
 
 public class ExternalPage {
-  public static final Target MENU = Target.the( "menu {0} into Iframe" ).locatedBy( "(//a[contains(text(), '{0}')])[1]" );
+    public static final Target MENU =
+            Target.the("menu {0} into Iframe").locatedBy("(//a[contains(text(), '{0}')])[1]");
 
-  public static final Target PAGE_TITLE = Target.the( "New page title" ).locatedBy( "//h1" );
+    public static final Target PAGE_TITLE = Target.the("New page title").locatedBy("//h1");
 }

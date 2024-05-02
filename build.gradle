@@ -46,7 +46,8 @@ serenity {
 }
 
 spotless {
-    encoding 'UTF-8' // Set the encoding, replace 'UTF-8' with `${encoding}` if it's dynamically defined
+    encoding 'UTF-8'
+    // Set the encoding, replace 'UTF-8' with `${encoding}` if it's dynamically defined
 
     java {
         // Apply Google Java Format with a specific style and options
