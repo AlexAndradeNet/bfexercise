@@ -1,63 +1,62 @@
 # language: en
 
 #@ignore
-Feature: Resolving basic exercises
+Feature: Practicing Basic User Interactions
   As a User
-  I want to test all the exercises
-  So that I can practice the new knowledge
+  I want to test various basic exercises
+  So that I can enhance my practical skills with foundational interactions
 
-
-  Background: Open the home page
-    Given the Verena is in the home page
+  Background: Accessing the Home Page
+    Given Verena is on the home page
 
     #=============================================================================
 
   #@ignore
-  Scenario: Select option in radio button
-    When select the "Radio2" option in the radio button
-    Then the "Radio2" option is selected
+  Scenario: Selecting an Option in a Radio Button
+    When she select the "Radio2" option in the radio button
+    Then the "Radio2" option should be selected
 
   #@ignore
-  Scenario: Select country from menu
-    When select "United States (USA)" from country menu
-    Then the "United States (USA)" was wrote into the country text field
+  Scenario: Choosing a Country from a Dropdown Menu
+    When she select "United States (USA)" from the country menu
+    Then "United States (USA)" should appear in the country text field
 
   #@ignore
-  Scenario: Select option for dropdown
-    When select "Option3" from dropdown
-    Then the "Option3" is the selected value in the dropdown
+  Scenario: Selecting an Option from a Dropdown Menu
+    When she select "Option3" from the dropdown
+    Then "Option3" should be displayed as the selected value in the dropdown
 
   #@ignore
-  Scenario: Check options in the checkbox
-    When select "Option1" in the checkbox
-    And select "Option3" in the checkbox
-    Then the "Option1" is the selected value in the checkbox
-    And the "Option3" is the selected value in the checkbox
-
-  ##@ignore
-  Scenario: Alert the name ALEX
-    When alert the name "ALEX"
-    Then the alert has the text "Hello ALEX, share this practice page and share your knowledge"
+  Scenario: Verifying Multiple Checkbox Selections
+    When she selects "Option1" in the checkbox
+    And she selects "Option3" in the checkbox
+    Then "Option1" should be a selected value in the checkbox
+    And "Option3" should be a selected value in the checkbox
 
   #@ignore
-  Scenario: Confirm the name ALEX
-    When confirm the name "ALEX"
-    Then the confirm has the text "Hello ALEX, Are you sure you want to confirm?"
+  Scenario: Displaying a Custom Alert with the Name
+    When she triggers an alert with the name "ALEX"
+    Then the alert should display the text "Hello ALEX, share this practice page and share your knowledge"
 
   #@ignore
-  Scenario: Third price is 30
-    When read the third price
-    Then the third price is 30
+  Scenario: Displaying a Custom Confirm Dialog with a Custom Name
+    When she triggers a confirmation dialog for the name "ALEX"
+    Then the Confirmation Dialog should display the text "Hello ALEX, Are you sure you want to confirm?"
 
   #@ignore
-  Scenario: Hide an object
-    Given the text box HideShow Example is displayed
-    When ask for Hide it
-    Then the text box is hidden
+  Scenario: Checking the Value of the Third item in the Price Table
+    When she reads the third price listed
+    Then the price should be 30
 
   #@ignore
-  Scenario: Hide and Show object
-    Given the text box HideShow Example is displayed
-    When ask for Hide it
-    And ask for Show it
-    Then the text box is displayed
+  Scenario: Hiding a Visible Text Box
+    Given the text box "HideShow Example" is visible
+    When she requests to hide it
+    Then the text box should be hidden
+
+  #@ignore
+  Scenario: Toggling Visibility of a Text Box
+    Given the text box "HideShow Example" is visible
+    When she requests to hide it
+    And she requests to show it again
+    Then the text box should be visible

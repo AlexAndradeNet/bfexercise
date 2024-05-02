@@ -24,22 +24,22 @@ import net.serenitybdd.screenplay.ensure.Ensure;
 
 public class AdvancedUIStepsDefinitions {
 
-    @When("clicks on the New Window button")
+    @When("she/he clicks on the \"New Window\" button")
     public void clicksOnTheNewWindowButton() {
         openNewWindow();
     }
 
-    @And("clicks to the {string} link in the new window button")
+    @And("she/he clicks the {string} link in the new window")
     public void waitSecondsBeforeClicksToTheLinkInTheNewWindow(String menuOption) {
         goToNewWindowAndWaitBeforeClickOnLink(menuOption);
     }
 
-    @And("clicks to the {string} link in the new tab button")
+    @And("she/he clicks the {string} link in the new tab")
     public void waitSecondsBeforeClicksToTheLinkInTheNewTab(String menuOption) {
         goToNewTabAndWaitBeforeClickOnLink(menuOption);
     }
 
-    @Then("the page title is {string}")
+    @Then("the page titled {string} should be displayed")
     public void thePageTitleIs(String expectedTitle) {
         theActorInTheSpotlight()
                 .attemptsTo(
@@ -47,17 +47,17 @@ public class AdvancedUIStepsDefinitions {
                                 .isEqualTo(expectedTitle));
     }
 
-    @And("return to the main page after close the new window")
+    @And("she/he should return to the main page after closing the new window")
     public void returnToTheMainPageAfterCloseTheNewWindow() {
         returnToTheDefaultContext();
     }
 
-    @When("clicks on the New Tab button")
+    @When("she/he clicks on the \"New Tab\" button")
     public void clicksOnTheNewTabButton() {
         openNewTab();
     }
 
-    @And("return to the main page after close the new tab")
+    @And("she/he should returns to the main page after closing the new tab")
     public void returnToTheMainPageAfterCloseTheNewTab() {
         returnToTheDefaultContext();
     }

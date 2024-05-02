@@ -15,7 +15,6 @@ package net.alexanderandrade.ui.tasks;
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 import net.alexanderandrade.ui.interactions.ClickOn;
 import net.alexanderandrade.ui.interactions.HoverOn;
@@ -23,8 +22,8 @@ import net.alexanderandrade.ui.interactions.WaitForNewPageOrTabAndSwitch;
 import net.alexanderandrade.ui.interactions.WaitForPageLoad;
 import net.alexanderandrade.ui.ui.ExternalPage;
 import net.alexanderandrade.ui.ui.HomePage;
-import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Step;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -37,15 +36,11 @@ import net.serenitybdd.screenplay.targets.Target;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class HomeTasks {
 
-    @Managed private static final WebDriver driver = getDriver();
-    private static final JavascriptExecutor js = (JavascriptExecutor) driver;
-
-    private HomeTasks() {
+    public HomeTasks() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -86,11 +81,13 @@ public class HomeTasks {
     @Step("{0} force click on target")
     private static void clickForced(Target target) {
         WebElement webElement = createWebElementFromTarget(target);
+
+        var js = (JavascriptExecutor) Serenity.getDriver();
         js.executeScript("arguments[0].click();", webElement);
     }
 
     private static WebElement createWebElementFromTarget(Target target) {
-        return driver.findElement(By.xpath(target.getCssOrXPathSelector()));
+        return Serenity.getDriver().findElement(By.xpath(target.getCssOrXPathSelector()));
     }
 
     @Step("{0} enter name {1} in alert")

@@ -13,14 +13,20 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.definitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.actors.OnlineCast;
 
 public class ParameterDefinitions {
+    @ParameterType("Elizabeth|Verena|Alexander|Fred")
+    public Actor actor(String actorName) {
+        return OnStage.theActorCalled(actorName);
+    }
 
-    @ParameterType("Elizabeth|Verena|Alexander")
-    public Actor actor(String actor) {
-        return OnStage.theActorCalled(actor);
+    @Before
+    public void setTheStage() {
+        OnStage.setTheStage(new OnlineCast());
     }
 }

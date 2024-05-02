@@ -13,9 +13,8 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.interactions;
 
-import static net.serenitybdd.core.Serenity.getDriver;
-
 import java.time.Duration;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +24,7 @@ public class WaitForNewPageOrTabAndSwitch implements Interaction {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        WebDriver driver = getDriver();
+        WebDriver driver = Serenity.getDriver();
         String originalHandle = driver.getWindowHandle();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(windowsOrTabs -> driver.getWindowHandles().size() > 1);
@@ -33,10 +32,11 @@ public class WaitForNewPageOrTabAndSwitch implements Interaction {
         for (String handle : driver.getWindowHandles()) {
             if (!handle.equals(originalHandle)) {
                 driver.switchTo().window(handle);
-                WaitForPageLoad.complete().performAs(actor);
                 break;
             }
         }
+
+        WaitForPageLoad.complete().performAs(actor);
     }
 
     public static Interaction andSwitch() {

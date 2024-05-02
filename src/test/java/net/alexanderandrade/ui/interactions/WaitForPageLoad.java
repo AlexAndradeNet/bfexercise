@@ -13,9 +13,8 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.interactions;
 
-import static net.serenitybdd.core.Serenity.getDriver;
-
 import java.time.Duration;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import org.openqa.selenium.JavascriptExecutor;
@@ -26,7 +25,7 @@ public class WaitForPageLoad implements Interaction {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        WebDriver driver = getDriver();
+        WebDriver driver = Serenity.getDriver();
         var js = (JavascriptExecutor) driver;
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(
