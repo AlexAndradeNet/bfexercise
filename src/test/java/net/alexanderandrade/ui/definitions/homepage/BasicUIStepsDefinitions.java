@@ -13,14 +13,14 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.definitions.homepage;
 
-import static net.alexanderandrade.ui.questions.HomeQuestions.*;
-import static net.alexanderandrade.ui.tasks.HomeTasks.*;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
+
+import static net.alexanderandrade.ui.questions.HomeQuestions.*;
+import static net.alexanderandrade.ui.tasks.HomeTasks.*;
 
 public class BasicUIStepsDefinitions {
 

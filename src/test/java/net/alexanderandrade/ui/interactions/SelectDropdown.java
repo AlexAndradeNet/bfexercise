@@ -13,13 +13,13 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.interactions;
 
-import static net.serenitybdd.screenplay.Tasks.instrumented;
-
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.serenitybdd.screenplay.targets.Target;
+
+import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class SelectDropdown implements Interaction {
     private final Target dropdown;

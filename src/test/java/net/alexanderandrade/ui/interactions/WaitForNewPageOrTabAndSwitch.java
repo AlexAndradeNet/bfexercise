@@ -13,12 +13,13 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.interactions;
 
-import java.time.Duration;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class WaitForNewPageOrTabAndSwitch implements Interaction {
 

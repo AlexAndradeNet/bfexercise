@@ -128,3 +128,11 @@ tasks.named('spotlessApply') {
 tasks.named('spotlessCheck') {
     group = 'verification'
 }
+
+sonar {
+    properties {
+        property "sonar.coverage.exclusions", "src/**/*.java"
+        property "sonar.sources", "src"
+        property "sonar.test.exclusions", "src/test/**/*.java"
+    }
+}

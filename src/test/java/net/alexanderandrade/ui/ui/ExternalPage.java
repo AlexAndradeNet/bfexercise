@@ -16,6 +16,10 @@ package net.alexanderandrade.ui.ui;
 import net.serenitybdd.screenplay.targets.Target;
 
 public class ExternalPage {
+    private ExternalPage() {
+        super();
+    }
+
     public static final Target MENU =
             Target.the("menu {0} into Iframe").locatedBy("(//a[contains(text(), '{0}')])[1]");
 

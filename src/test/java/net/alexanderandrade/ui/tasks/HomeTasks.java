@@ -13,8 +13,6 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.tasks;
 
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
-
 import net.alexanderandrade.ui.interactions.*;
 import net.alexanderandrade.ui.ui.ExternalPage;
 import net.alexanderandrade.ui.ui.HomePage;
@@ -22,8 +20,13 @@ import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.actions.*;
+import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.Open;
+import net.serenitybdd.screenplay.actions.Scroll;
+import net.serenitybdd.screenplay.actions.Switch;
 import net.serenitybdd.screenplay.waits.WaitUntil;
+
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
 
 public class HomeTasks {
 
@@ -46,14 +49,14 @@ public class HomeTasks {
     }
 
     @Step("{0} enter name {1} in alert")
-    public static <T extends Actor> void alertName(Actor actor, String name) {
+    public static void alertName(Actor actor, String name) {
         actor.attemptsTo(
                 Enter.theValue(name).into(HomePage.TEXTBOX_NAME),
                 ClickOn.target(HomePage.BUTTON_ALERT));
     }
 
     @Step("{0} confirm name {1}")
-    public static <T extends Actor> void confirmName(Actor actor, String name) {
+    public static void confirmName(Actor actor, String name) {
         actor.attemptsTo(
                 Enter.theValue(name).into(HomePage.TEXTBOX_NAME),
                 ClickOn.target(HomePage.BUTTON_CONFIRM));
@@ -65,7 +68,7 @@ public class HomeTasks {
     }
 
     @Step("{0} select radio button {1}")
-    public static <T extends Actor> void selectRadioButton(Actor actor, String radioButtonValue) {
+    public static void selectRadioButton(Actor actor, String radioButtonValue) {
         actor.attemptsTo(ForceClick.on(HomePage.RADIO_BUTTON.of(radioButtonValue.toLowerCase())));
     }
 
@@ -78,7 +81,7 @@ public class HomeTasks {
     }
 
     @Step("{0} hover over the button")
-    public static <T extends Actor> void hoverOverTheButton(Actor actor) {
+    public static void hoverOverTheButton(Actor actor) {
         actor.attemptsTo(HoverOn.target(HomePage.BUTTON_MOUSE_OVER));
     }
 
@@ -91,8 +94,7 @@ public class HomeTasks {
     }
 
     @Step("{0} go to new window and wait before clicking on link {1}")
-    public static <T extends Actor> void goToNewWindowOrTabAndWaitBeforeClickOnLink(
-            Actor actor, String menuOption) {
+    public static void goToNewWindowOrTabAndWaitBeforeClickOnLink(Actor actor, String menuOption) {
         actor.attemptsTo(
                 WaitForNewPageOrTabAndSwitch.andSwitch(),
                 ClickOn.target(ExternalPage.MENU.of(menuOption)));
@@ -104,22 +106,22 @@ public class HomeTasks {
     }
 
     @Step("{0} open new tab")
-    public static <T extends Actor> void openNewTab(Actor actor) {
+    public static void openNewTab(Actor actor) {
         actor.attemptsTo(ClickOn.target(HomePage.BUTTON_OPEN_TAB));
     }
 
     @Step("{0} open new window")
-    public static <T extends Actor> void openNewWindow(Actor actor) {
+    public static void openNewWindow(Actor actor) {
         actor.attemptsTo(ClickOn.target(HomePage.BUTTON_OPEN_WINDOW));
     }
 
     @Step("{0} hide object")
-    public static <T extends Actor> void hideObject(Actor actor) {
+    public static void hideObject(Actor actor) {
         actor.attemptsTo(ClickOn.target(HomePage.BUTTON_HIDE));
     }
 
     @Step("{0} show object")
-    public static <T extends Actor> void showObject(Actor actor) {
+    public static void showObject(Actor actor) {
         actor.attemptsTo(ClickOn.target(HomePage.BUTTON_SHOW));
     }
 }

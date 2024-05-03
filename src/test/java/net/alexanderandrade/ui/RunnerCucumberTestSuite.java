@@ -13,9 +13,9 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui;
 
-import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
-
 import org.junit.platform.suite.api.*;
+
+import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
 
 @Suite
 @IncludeEngines("cucumber")
@@ -25,4 +25,5 @@ import org.junit.platform.suite.api.*;
         value =
                 "io.cucumber.core.plugin.SerenityReporterParallel,pretty,timeline:build/test-results/timeline")
 @ExcludeTags({"@ignore", "@wip", "@manual", "@skip"})
-public class RunnerCucumberTestSuite {}
+public class RunnerCucumberTestSuite {
+}

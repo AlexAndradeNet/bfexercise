@@ -16,4 +16,5 @@ package net.alexanderandrade.ui.data;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({"classpath:${environment}.properties"})
-public interface Environment extends Config {}
+public interface Environment extends Config {
+}
