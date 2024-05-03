@@ -5,6 +5,7 @@ plugins {
     id 'org.sonarqube' version '5.0.0.4638'
     id 'net.serenity-bdd.serenity-gradle-plugin' version '4.1.10'
     id 'com.diffplug.spotless' version '6.25.0'
+    id 'org.gradle.test-retry' version '1.5.9'
 }
 
 defaultTasks 'clean', 'test', 'aggregate'
@@ -15,30 +16,38 @@ repositories {
 }
 
 java {
-    sourceCompatibility = 17
-    targetCompatibility = 17
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
-apply from: "$rootDir/gradle/libraries.gradle"
+ext {
+    versions = [
+            serenityCore: '4.1.10',
+            cucumber: '7.17.0',
+            junit: '5.10.2',
+            junitPlatform: '1.10.2',
+            aeonbits: '1.0.12',
+            gson: '2.10.1',
+            slf4j: '2.0.13'
+    ]
+}
 
 dependencies {
-    implementation libs.aeonbits,
-            libs.slf4j.api,
-            libs.slf4j.simple
+    implementation "org.aeonbits.owner:owner:${versions.aeonbits}"
+    testImplementation "org.slf4j:slf4j-api:${versions.slf4j}",
+            "org.slf4j:slf4j-simple:${versions.slf4j}",
+            "com.google.code.gson:gson:${versions.gson}",
+            "net.serenity-bdd:serenity-core:${versions.serenityCore}",
+            "net.serenity-bdd:serenity-ensure:${versions.serenityCore}",
+            "net.serenity-bdd:serenity-screenplay:${versions.serenityCore}",
+            "net.serenity-bdd:serenity-screenplay-webdriver:${versions.serenityCore}",
+            "net.serenity-bdd:serenity-cucumber:${versions.serenityCore}",
+            "org.junit.jupiter:junit-jupiter-api:${versions.junit}",
+            "org.junit.platform:junit-platform-suite:${versions.junitPlatform}",
+            "io.cucumber:cucumber-java:${versions.cucumber}",
+            "io.cucumber:cucumber-junit-platform-engine:${versions.cucumber}"
 
-    compileOnly libs.gson
-
-    testImplementation libs.test.serenity.core,
-            libs.test.serenity.ensure,
-            libs.test.serenity.screenplay,
-            libs.test.serenity.screenplayWebdriver,
-            libs.test.serenity.cucumber,
-            libs.test.junit.engine,
-            libs.test.junit.launcher,
-            libs.test.junit.suite,
-            libs.test.cucumber.java,
-            libs.test.cucumber.junit
-
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${versions.junit}"
 }
 
 serenity {
@@ -83,19 +92,23 @@ spotless {
 
 test {
     dependsOn 'spotlessApply'
-    // testLogging.showStandardStreams = true
+    testLogging {
+        showStandardStreams = true
+        //events "passed", "skipped", "failed"
+    }
     systemProperties System.getProperties()
     useJUnitPlatform()
-    testLogging {
-        events "passed", "skipped", "failed"
+    retry {
+        maxRetries = 0 // Disables test retries
     }
+    finalizedBy 'aggregate'
 }
 
-test.finalizedBy(aggregate)
-
-/*tasks.withType(Test).configureEach {
-    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
-}*/
+tasks.withType(Test) {
+    //maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+    maxParallelForks = Runtime.runtime.availableProcessors()
+    forkEvery = 1 // This can help with managing test isolation
+}
 
 gradle.startParameter.continueOnFailure = true
 

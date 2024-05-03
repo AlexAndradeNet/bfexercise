@@ -11,27 +11,27 @@ Dissemination of this information or reproduction of this material
 is strictly forbidden unless prior written permission is obtained
 from Alexander Andrade.
 */
-package net.alexanderandrade.ui.interactions;
+package net.alexanderandrade.ui.questions;
 
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.Interaction;
-import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Scroll;
+import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.targets.Target;
 
-public class ClickOn implements Interaction {
+public class ElementVisibility implements Question<Boolean> {
     private final Target target;
 
-    public ClickOn(Target target) {
+    private ElementVisibility(Target target) {
         this.target = target;
     }
 
-    @Override
-    public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(Scroll.to(target), Click.on(target));
+    public static Question<Boolean> of(Target target) {
+        return new ElementVisibility(target);
     }
 
-    public static ClickOn target(Target target) {
-        return new ClickOn(target);
+    @Override
+    @Step("{0} checks if #target is visible")
+    public Boolean answeredBy(Actor actor) {
+        return target.resolveFor(actor).isVisible();
     }
 }

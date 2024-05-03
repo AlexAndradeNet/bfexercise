@@ -13,52 +13,68 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.definitions.homepage;
 
+import static net.alexanderandrade.ui.questions.HomeQuestions.ensureThatTheContextualMenuIsDisplayed;
 import static net.alexanderandrade.ui.tasks.HomeTasks.*;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.alexanderandrade.ui.questions.GetExternalPageTitle;
+import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.ensure.Ensure;
 
 public class AdvancedUIStepsDefinitions {
 
-    @When("she/he clicks on the \"New Window\" button")
-    public void clicksOnTheNewWindowButton() {
-        openNewWindow();
+    @When("{actor} clicks on the \"New Window\" button")
+    public void clicksOnTheNewWindowButton(Actor actor) {
+        openNewWindow(actor);
     }
 
-    @And("she/he clicks the {string} link in the new window")
-    public void waitSecondsBeforeClicksToTheLinkInTheNewWindow(String menuOption) {
-        goToNewWindowAndWaitBeforeClickOnLink(menuOption);
+    @And("{actor} clicks the {string} link in the new window/tab")
+    public void waitSecondsBeforeClicksToTheLinkInTheNewWindowOrTab(
+            Actor actor, String menuOption) {
+        goToNewWindowOrTabAndWaitBeforeClickOnLink(actor, menuOption);
     }
 
-    @And("she/he clicks the {string} link in the new tab")
-    public void waitSecondsBeforeClicksToTheLinkInTheNewTab(String menuOption) {
-        goToNewTabAndWaitBeforeClickOnLink(menuOption);
+    @Then("{actor} should see a page titled {string}")
+    public void thePageTitleIs(Actor actor, String expectedTitle) {
+        actor.attemptsTo(
+                Ensure.that("The page title is correct", GetExternalPageTitle.mainTitle())
+                        .isEqualTo(expectedTitle));
     }
 
-    @Then("the page titled {string} should be displayed")
-    public void thePageTitleIs(String expectedTitle) {
-        theActorInTheSpotlight()
-                .attemptsTo(
-                        Ensure.that("The page title is correct", GetExternalPageTitle.mainTitle())
-                                .isEqualTo(expectedTitle));
+    @And("{actor} should return to the main page after closing the new window")
+    public void returnToTheMainPageAfterCloseTheNewWindow(Actor actor) {
+        returnToTheDefaultContext(actor);
     }
 
-    @And("she/he should return to the main page after closing the new window")
-    public void returnToTheMainPageAfterCloseTheNewWindow() {
-        returnToTheDefaultContext();
+    @When("{actor} clicks on the \"New Tab\" button")
+    public void clicksOnTheNewTabButton(Actor actor) {
+        openNewTab(actor);
     }
 
-    @When("she/he clicks on the \"New Tab\" button")
-    public void clicksOnTheNewTabButton() {
-        openNewTab();
+    @And("{actor} should returns to the main page after closing the new tab")
+    public void returnToTheMainPageAfterCloseTheNewTab(Actor actor) {
+        returnToTheDefaultContext(actor);
     }
 
-    @And("she/he should returns to the main page after closing the new tab")
-    public void returnToTheMainPageAfterCloseTheNewTab() {
-        returnToTheDefaultContext();
+    @Then("{actor} should see a page titled {string} within the iframe")
+    public void thePageLoadedInTheIframeHasTheTitle(Actor actor, String pageTitle) {
+        thePageTitleIs(actor, pageTitle);
+    }
+
+    @Then("{actor} should see the contextual menu")
+    public void theContextualMenuReloadIsDisplayed(Actor actor) {
+        ensureThatTheContextualMenuIsDisplayed(actor);
+    }
+
+    @When("{actor} hover over the \"Mouse Hover\" button")
+    public void hoverOnTheButtonMouseHover(Actor actor) {
+        hoverOverTheButton(actor);
+    }
+
+    @When("{actor} navigates to the {string} link inside the iframe")
+    public void navigateToTheJobSupportLinkInTheIframe(Actor actor, String menuOption) {
+        navigateAndInteractInIframe(actor, menuOption);
     }
 }

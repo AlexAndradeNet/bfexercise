@@ -24,5 +24,5 @@ import org.junit.platform.suite.api.*;
         key = PLUGIN_PROPERTY_NAME,
         value =
                 "io.cucumber.core.plugin.SerenityReporterParallel,pretty,timeline:build/test-results/timeline")
-@ExcludeTags("@ignore")
+@ExcludeTags({"@ignore", "@wip", "@manual", "@skip"})
 public class RunnerCucumberTestSuite {}

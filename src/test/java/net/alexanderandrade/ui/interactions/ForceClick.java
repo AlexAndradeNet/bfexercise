@@ -13,25 +13,30 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.interactions;
 
+import net.serenitybdd.annotations.Step;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
-import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.targets.Target;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
-public class ClickOn implements Interaction {
+public class ForceClick implements Interaction {
     private final Target target;
 
-    public ClickOn(Target target) {
+    public ForceClick(Target target) {
         this.target = target;
     }
 
-    @Override
-    public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(Scroll.to(target), Click.on(target));
+    public static Interaction on(Target target) {
+        return new ForceClick(target);
     }
 
-    public static ClickOn target(Target target) {
-        return new ClickOn(target);
+    @Override
+    @Step("{0} forcefully clicks on #target")
+    public <T extends Actor> void performAs(T actor) {
+        WebElement webElement = target.resolveFor(actor);
+        JavascriptExecutor js = (JavascriptExecutor) Serenity.getDriver();
+        js.executeScript("arguments[0].click();", webElement);
     }
 }

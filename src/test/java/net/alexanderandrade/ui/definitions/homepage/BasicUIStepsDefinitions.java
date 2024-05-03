@@ -20,127 +20,107 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.screenplay.Actor;
 
 public class BasicUIStepsDefinitions {
 
-    @When("she/he select the {string} option in the radio button")
-    public void selectTheOptionInTheRadioButton(String radioButtonValue) {
-        selectRadioButton(radioButtonValue);
+    @When("{actor} select the {string} option in the radio button")
+    public void selectTheOptionInTheRadioButton(Actor actor, String radioButtonValue) {
+        selectRadioButton(actor, radioButtonValue);
     }
 
-    @Then("the {string} option should be selected")
-    public void theOptionIsSelected(String radioButtonValue) {
-        ensureThatRadioButtonIsSelected(radioButtonValue);
+    @Then("{actor} should see that the {string} option is selected")
+    public void theOptionIsSelected(Actor actor, String radioButtonValue) {
+        ensureRadioButtonIsSelected(actor, radioButtonValue);
     }
 
-    @When("she/he select {string} from the country menu")
-    public void selectFromCountryMenu(String country) {
-        selectMenu(country);
+    @When("{actor} select {string} from the country menu")
+    public void selectFromCountryMenu(Actor actor, String country) {
+        selectMenu(actor, country);
     }
 
-    @Then("{string} should appear in the country text field")
-    public void theWasWroteIntoTheCountryTextField(String country) {
-        ensureThatTheMenuOptionIsSelected(country);
+    @Then("{actor} should see that the country text field value is set to {string}")
+    public void theWasWroteIntoTheCountryTextField(Actor actor, String country) {
+        ensureMenuOptionIsSelected(actor, country);
     }
 
-    @When("she/he select {string} from the dropdown")
-    public void selectFromDropdown(String optionValue) {
-        selectDropdown(optionValue);
+    @When("{actor} select {string} from the dropdown")
+    public void selectFromDropdown(Actor actor, String optionValue) {
+        selectDropdownOption(actor, optionValue);
     }
 
-    @Then("{string} should be displayed as the selected value in the dropdown")
-    public void theIsTheSelectedValueInTheDropdown(String optionValue) {
-        ensureThatTheDropdownOptionIsSelected(optionValue);
+    @Then("{actor} should see that {string} is selected in the dropdown menu")
+    public void theIsTheSelectedValueInTheDropdown(Actor actor, String optionValue) {
+        ensureDropdownOptionIsSelected(actor, optionValue);
     }
 
-    @When("she/he selects {string} in the checkbox")
-    public void selectInTheCheckbox(String option) {
-        selectCheckbox(option);
+    @When("{actor} selects {string} in the checkbox")
+    public void selectInTheCheckbox(Actor actor, String option) {
+        selectCheckboxOption(actor, option);
     }
 
-    @Then("{string} should be a selected value in the checkbox")
-    public void theIsTheSelectedValueInTheCheckbox(String optionValue) {
-        ensureThatTheCheckboxOptionIsSelected(optionValue);
+    @Then("{actor} should see that the {string} checkbox is checked")
+    public void theIsTheSelectedValueInTheCheckbox(Actor actor, String optionValue) {
+        ensureCheckboxOptionIsSelected(actor, optionValue);
     }
 
-    @When("she/he triggers an alert with the name {string}")
-    public void alertTheName(String value) {
-        alertName(value);
+    @When("{actor} triggers an Alert Dialog with the name {string}")
+    public void alertTheName(Actor actor, String value) {
+        alertName(actor, value);
     }
 
-    @Then("the alert should display the text {string}")
-    public void theAlertHasTheText(String value) {
-        ensureThatTheAlertHasTheText(value);
+    @Then("{actor} should see an Alert Dialog with the text {string}")
+    public void theAlertHasTheText(Actor actor, String alertText) {
+        ensureAlertHasText(actor, alertText);
     }
 
-    @When("she/he triggers a confirmation dialog for the name {string}")
-    public void confirmTheName(String value) {
-        confirmName(value);
+    @When("{actor} triggers a Confirmation Dialog for the name {string}")
+    public void confirmTheName(Actor actor, String value) {
+        confirmName(actor, value);
     }
 
-    @Then("the Confirmation Dialog should display the text {string}")
-    public void theConfirmHasTheText(String value) {
-        ensureThatTheAlertHasTheText(value);
+    @Then("{actor} should see a Confirmation Dialog with the prompt {string}")
+    public void theConfirmHasTheText(Actor actor, String value) {
+        ensureAlertHasText(actor, value);
     }
 
-    @When("she/he reads the third price listed")
-    public void readTheThirdPrice() {
+    @When("{actor} reads the third value listed in the price table")
+    public void readTheThirdPrice(Actor actor) {
         // Do nothing
     }
 
-    @Then("the price should be {int}")
-    public void theThirdPriceIs(int price) {
-        ensureThatTheThirdPriceValue(price);
+    @Then("{actor} should see that the third price is {int}")
+    public void theThirdPriceIs(Actor actor, int price) {
+        ensurePriceIsCorrect(actor, price);
     }
 
-    @Given("the text box \"HideShow Example\" is visible")
-    public void theTextBoxHideShowExampleIsDisplayed() {
-        ensureThatTheTextboxIsDisplayed();
+    @Given("{actor} can see that the \"HideShow Example\" text box is visible")
+    public void theTextBoxHideShowExampleIsDisplayed(Actor actor) {
+        ensureTextboxVisibility(actor, true);
     }
 
-    @When("she/he requests to hide it")
-    public void askForHideIt() {
-        hideObject();
+    @When("{actor} requests to hide the \"HideShow Example\" text box")
+    public void askForHideIt(Actor actor) {
+        hideObject(actor);
     }
 
-    @Then("the text box should be hidden")
-    public void theTextBoxIsHidden() {
-        ensureThatTheTextboxIsNotDisplayed();
+    @Then("{actor} should see the text box become hidden")
+    public void theTextBoxIsHidden(Actor actor) {
+        ensureTextboxVisibility(actor, false);
     }
 
-    @And("she/he requests to show it again")
-    public void askForShowIt() {
-        showObject();
+    @And("{actor} requests to show it again")
+    public void askForShowIt(Actor actor) {
+        showObject(actor);
     }
 
-    @Then("the text box should be visible")
-    public void theTextBoxIsDisplayed() {
-        ensureThatTheTextboxIsDisplayed();
+    @Then("{actor} should see the text box become visible again")
+    public void theTextBoxIsDisplayed(Actor actor) {
+        ensureTextboxVisibility(actor, true);
     }
 
-    @When("she/he hover over the \"Mouse Hover\" button")
-    public void hoverOnTheButtonMouseHover() {
-        hoverOverTheButton();
-    }
-
-    @Then("the contextual menu should be displayed")
-    public void theContextualMenuReloadIsDisplayed() {
-        ensureThatTheContextualMenuIsDisplayed();
-    }
-
-    @When("she/he navigates to the {string} link inside the iframe")
-    public void navigateToTheJobSupportLinkInTheIframe(String menuOption) {
-
-        navigateIntoIframe(menuOption);
-    }
-
-    @Then("the page loaded has the title {string}")
-    public void thePageLoadedHasTheTitle(String pageTitle) {
-        ensureThatTheLoadedPageHasTheTitle(pageTitle);
-    }
-
-    @Then("the page titled {string} should load within the iframe")
-    public void thePageLoadedInTheIframeHasTheTitle(String pageTitle) {
-        thePageLoadedHasTheTitle(pageTitle);
+    @And("{actor} should see that the {string} checkbox also is checked")
+    public void sheShouldSeeThatTheCheckboxAlsoIsChecked(Actor actor, String checkboxValue) {
+        ensureCheckboxOptionIsSelected(actor, checkboxValue);
     }
 }
