@@ -59,6 +59,9 @@ spotless {
     // Set the encoding, replace 'UTF-8' with `${encoding}` if it's dynamically defined
 
     java {
+        target '*.java'  // Exclude specific folder
+        targetExclude('/target/**/*', 'build/**/*') // Exclude specific folder
+
         // Apply Google Java Format with a specific style and options
         googleJavaFormat('1.22.0').aosp().reflowLongStrings(true)
 
@@ -80,12 +83,14 @@ spotless {
     // Format SQL files
     sql {
         target '**/*.sql' // Define which files to include
+        targetExclude('/target/**/*', 'build/**/*') // Exclude specific folder
         dbeaver()         // Apply DBeaver formatting conventions
     }
 
     // Format JSON files
     json {
         target '**/*.json'
+        targetExclude('/target/**/*', 'build/**/*') // Exclude specific folder
         gson() // Apply Gson-based formatting
     }
 }

@@ -32,5 +32,5 @@ Feature: Advanced User Exercises
   Scenario: Opening and Verifying a Blog Page in a New Tab
     When she clicks on the "New Tab" button
     And she clicks the "Blog" link in the new tab
-    Then she should see a page titled "INVENTED TITLE"
+    Then she should see a page titled "Mindblown: a blog about philosophy."
     And she should returns to the main page after closing the new tab

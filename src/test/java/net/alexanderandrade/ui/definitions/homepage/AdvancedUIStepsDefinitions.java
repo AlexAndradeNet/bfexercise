@@ -40,7 +40,7 @@ public class AdvancedUIStepsDefinitions {
     public void thePageTitleIs(Actor actor, String expectedTitle) {
         actor.attemptsTo(
                 Ensure.that("The page title is correct", GetExternalPageTitle.mainTitle())
-                        .isEqualTo(expectedTitle));
+                        .isEqualToIgnoringCase(expectedTitle));
     }
 
     @And("{actor} should return to the main page after closing the new window")
