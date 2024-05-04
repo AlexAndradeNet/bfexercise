@@ -8,7 +8,7 @@ plugins {
     id 'org.gradle.test-retry' version '1.5.9'
 }
 
-defaultTasks 'clean', 'test', 'aggregate'
+//defaultTasks 'clean', 'test', 'aggregate'
 
 repositories {
     mavenLocal()
@@ -22,13 +22,13 @@ java {
 
 ext {
     versions = [
-            serenityCore: '4.1.10',
-            cucumber: '7.17.0',
-            junit: '5.10.2',
+            serenityCore : '4.1.10',
+            cucumber     : '7.17.0',
+            junit        : '5.10.2',
             junitPlatform: '1.10.2',
-            aeonbits: '1.0.12',
-            gson: '2.10.1',
-            slf4j: '2.0.13'
+            aeonbits     : '1.0.12',
+            gson         : '2.10.1',
+            slf4j        : '2.0.13'
     ]
 }
 
@@ -59,6 +59,8 @@ spotless {
     // Set the encoding, replace 'UTF-8' with `${encoding}` if it's dynamically defined
 
     java {
+        targetExclude('/target/**/*', 'build/**/*') // Exclude specific folder
+
         // Apply Google Java Format with a specific style and options
         googleJavaFormat('1.22.0').aosp().reflowLongStrings(true)
 
@@ -80,18 +82,19 @@ spotless {
     // Format SQL files
     sql {
         target '**/*.sql' // Define which files to include
+        targetExclude('/target/**/*', 'build/**/*') // Exclude specific folder
         dbeaver()         // Apply DBeaver formatting conventions
     }
 
     // Format JSON files
     json {
         target '**/*.json'
+        targetExclude('/target/**/*', 'build/**/*') // Exclude specific folder
         gson() // Apply Gson-based formatting
     }
 }
 
 test {
-    dependsOn 'spotlessApply'
     testLogging {
         showStandardStreams = true
         //events "passed", "skipped", "failed"
@@ -102,6 +105,7 @@ test {
         maxRetries = 0 // Disables test retries
     }
     finalizedBy 'aggregate'
+    finalizedBy 'spotlessApply'
 }
 
 tasks.withType(Test) {
@@ -128,3 +132,19 @@ tasks.named('spotlessApply') {
 tasks.named('spotlessCheck') {
     group = 'verification'
 }
+
+sonar {
+    properties {
+        property "sonar.coverage.exclusions", "src/**/*.java"
+        property "sonar.sources", "src"
+        property "sonar.test.exclusions", "src/test/**/*.java"
+    }
+}
+
+tasks.register('installLocalGitHook', Copy) {
+    from new File(rootProject.rootDir, 'scripts/pre-commit')
+    into { new File(rootProject.rootDir, '.git/hooks') }
+    fileMode 0775
+}
+
+build.dependsOn installLocalGitHook

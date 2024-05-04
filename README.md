@@ -2,28 +2,49 @@
 
 ![Company logo](docs/assets/company-logo.png)
 
-AlexanderAndrade.Net Repository
+AlexAndrade.Net Repository
 
-[![Java JDK](https://img.shields.io/badge/JavaJDK-8-green.svg)](https://www.oracle.com/co/java/technologies/javase/javase8-archive-downloads.html)
-[![gradle](https://img.shields.io/badge/Gradle-v7.4.1-yellow.svg)](https://gradle.org/install/)
+## Description
 
-> A Gradle project to test Front, Java Serenity & Cucumber.
->
+(SerenityBDD + Cucumber + Selenium + Java + Gradle) / ScreenPlay Pattern.
 
-## Table of Contents
+Multithreading, parallel execution, and more.
 
-### Functional test project
+## Execution
 
-- [🧾 Project requirements.](docs/00-Requirements%20Specification.pdf)
-- [🧾 Test project plan.](docs/01_TEST_PLAN.md)
-- [🧾 Test project cases](https://github.com/AlexAndradeSan/blankfactor/raw/main/docs/02_TEST_CASES.xlsx) (
-  Download excel).
+Regular execution:
 
-### Automation project
+```bash
+./gradlew clean test
+```
 
-- [🤖 Automation project setup.](docs/03_AUTOMATION_SETUP.md)
-- [🐞 Sonarqube report](docs/04_SONARQUBE_REPORT.png)
-- [📊 Serenity BDD execution report](https://htmlpreview.github.io/?https://github.com/AlexAndradeSan/blankfactor/blob/main/target/site/serenity/index.html).
+Execution without caching
+
+```bash
+./gradlew clean test --rerun-tasks
+```
+
+### Static Analysis
+
+To run the static analysis tools, you can run the following command:
+
+```bash
+./gradlew test sonar 
+```
+
+To check the results, you can open the following URL in your browser:
+
+```bash
+open target/site/serenity/index.html
+```
+
+### Features checking
+
+To mantain the features written in Gherkin up to date, you can run the following command:
+
+```bash
+sh scripts/gherkin-lint.sh
+```
 
 ## Contributing
 
