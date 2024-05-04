@@ -43,7 +43,7 @@ open target/site/serenity/index.html
 To mantain the features written in Gherkin up to date, you can run the following command:
 
 ```bash
-sh gherkin_check.sh
+sh scripts/gherkin-lint.sh
 ```
 
 ## Contributing
