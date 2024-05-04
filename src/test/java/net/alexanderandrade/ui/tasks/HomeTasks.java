@@ -13,6 +13,8 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.tasks;
 
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
+
 import net.alexanderandrade.ui.interactions.*;
 import net.alexanderandrade.ui.ui.ExternalPage;
 import net.alexanderandrade.ui.ui.HomePage;
@@ -25,8 +27,6 @@ import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.actions.Switch;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
 
 public class HomeTasks {
 

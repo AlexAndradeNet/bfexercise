@@ -13,15 +13,15 @@ from Alexander Andrade.
 */
 package net.alexanderandrade.ui.definitions.homepage;
 
+import static net.alexanderandrade.ui.questions.HomeQuestions.ensureThatTheContextualMenuIsDisplayed;
+import static net.alexanderandrade.ui.tasks.HomeTasks.*;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.alexanderandrade.ui.questions.GetExternalPageTitle;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.ensure.Ensure;
-
-import static net.alexanderandrade.ui.questions.HomeQuestions.ensureThatTheContextualMenuIsDisplayed;
-import static net.alexanderandrade.ui.tasks.HomeTasks.*;
 
 public class AdvancedUIStepsDefinitions {
 
