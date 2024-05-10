@@ -42,6 +42,7 @@ dependencies {
             "net.serenity-bdd:serenity-screenplay:${versions.serenityCore}",
             "net.serenity-bdd:serenity-screenplay-webdriver:${versions.serenityCore}",
             "net.serenity-bdd:serenity-cucumber:${versions.serenityCore}",
+            "net.serenity-bdd:serenity-junit:${versions.serenityCore}",
             "org.junit.jupiter:junit-jupiter-api:${versions.junit}",
             "org.junit.platform:junit-platform-suite:${versions.junitPlatform}",
             "io.cucumber:cucumber-java:${versions.cucumber}",

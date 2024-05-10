@@ -17,9 +17,13 @@ Feature: Advanced User Exercises
     Then she should see the contextual menu
 
   #@skip
-  Scenario: Navigating to a Support Link Within an Iframe
-    When she navigates to the "Job Support" link inside the iframe
-    Then she should see a page titled "Job Support" within the iframe
+  Scenario Outline: Navigating to a Support Link Within an Iframe
+    When she navigates to the "<linkorpagetitle>" link inside the iframe
+    Then she should see a page titled "<linkorpagetitle>" within the iframe
+
+    Examples:
+    | linkorpagetitle |
+    | Job Support    |
 
   #@skip
   Scenario: Opening and Verifying a Blog Page in a New Window
